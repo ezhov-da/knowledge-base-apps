@@ -1,4 +1,4 @@
-package ru.ezhov.knowledgeBase.common.classes.raw;
+package ru.ezhov.knowledgeBase.common.classes;
 
 import java.util.Set;
 

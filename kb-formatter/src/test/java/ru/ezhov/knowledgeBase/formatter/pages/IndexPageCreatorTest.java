@@ -1,24 +1,25 @@
-package ru.ezhov.knowledgeBase.formatter;
+package ru.ezhov.knowledgeBase.formatter.pages;
 
+import org.junit.Test;
 import ru.ezhov.knowledgeBase.common.classes.raw.Knowledge;
 import ru.ezhov.knowledgeBase.common.classes.raw.KnowledgeRaw;
 import ru.ezhov.knowledgeBase.common.interfaces.DataFormatter;
 import ru.ezhov.knowledgeBase.common.interfaces.DataLoader;
 import ru.ezhov.knowledgeBase.common.interfaces.DataTransformer;
+import ru.ezhov.knowledgeBase.formatter.HtmlDataFormatter;
 import ru.ezhov.knowledgeBase.loader.DataLoaderFactory;
 import ru.ezhov.knowledgeBase.loader.GitInfo;
 import ru.ezhov.knowledgeBase.transformer.SimpleDataTransformer;
 import ru.ezhov.propertiesReader.Properties;
 import ru.ezhov.propertiesReader.PropertiesFactory;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
 
-public class HtmlDataFormatterTest {
-    @org.junit.Test
-    public void format() throws Exception {
+public class IndexPageCreatorTest {
+    @Test
+    public void ctreate() throws Exception {
         Properties<String, String> stringProperties =
                 PropertiesFactory.getPropertiesFromUserDirectory(
                         ".test-path-html-kb-formatter");
@@ -40,10 +41,11 @@ public class HtmlDataFormatterTest {
 
         Set<Knowledge> knowledges = knowledgeRawDataTransformer.transform(knowledgeRawSet);
 
-        DataFormatter<Object, Knowledge> dataFormatter = new HtmlDataFormatter(path);
+        PageCreator<String> stringPageCreator = new IndexPageCreator(knowledges);
 
-        dataFormatter.format(knowledges);
+        String str = stringPageCreator.ctreate();
 
+        System.out.println(str);
     }
 
 }

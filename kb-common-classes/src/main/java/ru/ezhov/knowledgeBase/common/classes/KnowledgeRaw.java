@@ -1,4 +1,4 @@
-package ru.ezhov.knowledgeBase.common.classes.raw;
+package ru.ezhov.knowledgeBase.common.classes;
 
 public class KnowledgeRaw {
     private String name;
